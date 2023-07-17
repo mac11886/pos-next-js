@@ -1,0 +1,10 @@
+.menuGreen {
+  background-color: #b2cc53;
+  height: 30px;
+  width: 100px;
+  border-radius: 50px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

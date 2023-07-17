@@ -1,0 +1,26 @@
+.avaliable {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.circleTableOpen {
+  height: 60px;
+  width: 60px;
+  background-color: #b2cc53;
+  border-radius: 50%;
+}
+.circleTableClose {
+  height: 60px;
+  width: 60px;
+  background-color: #dadada;
+  border-radius: 50%;
+}
+
+.circleNumTable {
+  height: 30px;
+  width: 30px;
+  background-color: #1e2446;
+  border-radius: 50%;
+  text-align: center;
+  align-items: center;
+  color: white;
+}

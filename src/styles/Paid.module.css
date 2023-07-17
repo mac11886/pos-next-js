@@ -1,0 +1,10 @@
+.note_menu {
+  gap: 0 !important;
+  line-height: 0 !important;
+}
+
+/* .right_aligned_input
+  .ant-input-number-input-wrap
+  > input.ant-input-number-input {
+  text-align: end !important;
+} */
