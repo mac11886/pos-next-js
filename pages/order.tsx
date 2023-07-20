@@ -49,15 +49,12 @@ function Order({}: Props) {
             <Row>
               <Space
                 direction="horizontal"
-                style={
-                  {
-                    //   width: "100%",
-                    //   border: "1px solid",
-                    //   display: "flex",
-                    //   justifyContent: "space-evenly",
-                  }
-                }
-                size={100}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                }}
+                // size={100}
               >
                 <Table data={table} />
                 <Space direction="vertical">
@@ -114,12 +111,6 @@ function Order({}: Props) {
               })}
             </Row>
             <Row>
-              {/* <InfiniteScroll
-                endMessage={<Divider plain>It is all, nothing more 🤐</Divider>}>
-                    <List>
-
-                    </List>
-                </InfiniteScroll> */}
               <div
                 style={{
                   overflowY: "auto",

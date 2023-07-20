@@ -1,14 +1,11 @@
+import { Table } from "@/repositories/table/interface";
 import { Space } from "antd";
 import { useRouter } from "next/router";
 import { GiTable } from "react-icons/gi";
 import styles from "../../styles/Table.module.css";
 
 type Props = {
-  data?: {
-    id: number;
-    status: boolean;
-    size: string;
-  };
+  data?: Table;
 };
 
 export default function Table({ data }: Props) {

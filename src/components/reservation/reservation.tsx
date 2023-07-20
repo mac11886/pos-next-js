@@ -1,17 +1,10 @@
+import { ListTable } from "@/repositories/table/interface";
 import { Collapse, CollapseProps, Row } from "antd";
 import Table from "../table/table";
 
 type Props = {
-  table?: {
-    id: number;
-    status: boolean;
-    size: string;
-  }[];
-  bar?: {
-    id: number;
-    status: boolean;
-    size: string;
-  }[];
+  table?: ListTable | null;
+  bar?: ListTable | null;
 };
 
 function Reservation({ table, bar }: Props) {
@@ -22,7 +15,7 @@ function Reservation({ table, bar }: Props) {
       children: (
         <>
           <Row>
-            {table?.map((m, i) => {
+            {table?.table.map((m, i) => {
               return <Table key={i} data={m} />;
             })}
           </Row>
@@ -35,7 +28,7 @@ function Reservation({ table, bar }: Props) {
       children: (
         <>
           <Row>
-            {bar?.map((m, i) => {
+            {bar?.table.map((m, i) => {
               return <Table key={i} data={m} />;
             })}
           </Row>

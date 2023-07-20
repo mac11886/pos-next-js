@@ -1,0 +1,35 @@
+@media (max-width: 1500px) {
+  .text_title {
+    font-size: 18px;
+  }
+  .text_middle_icon {
+    font-size: 40px;
+  }
+  .text_middle {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .text_title {
+    font-size: 18px;
+  }
+  .text_middle_icon {
+    font-size: 40px;
+  }
+  .text_middle {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .text_title {
+    font-size: 16px;
+  }
+  .text_middle_icon {
+    font-size: 30px;
+  }
+  .text_middle {
+    font-size: 16px;
+  }
+}

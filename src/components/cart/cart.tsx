@@ -23,6 +23,7 @@ export default function Cart({}: Props) {
             borderTop: "2px solid",
             borderBottom: "2px solid",
             overflowY: "auto",
+            marginRight: "10px",
           }}
         >
           <Row style={{ margin: "5px", height: "400px" }}>

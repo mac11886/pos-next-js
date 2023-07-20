@@ -1,11 +1,12 @@
 import { AppleOutlined } from "@ant-design/icons";
-import { Col, Row, Typography } from "antd";
+import { Col, Row, theme, Typography } from "antd";
 import { useRouter } from "next/router";
 import { RxAvatar } from "react-icons/rx";
-
+import styles from "./HeaderLayout.module.css";
+const { getDesignToken, useToken } = theme;
 const HeaderLayout = () => {
   const router = useRouter();
-
+  const { token } = useToken();
   let title = "Table";
   if (router.pathname == "/") {
     title = "Table";
@@ -17,9 +18,13 @@ const HeaderLayout = () => {
     title = "< Paid";
   }
   return (
-    <Row style={{ height: "100px" }} className="header_color">
+    <Row style={{ height: "100px", backgroundColor: token.colorPrimary }}>
       <Col
-        span={8}
+        xs={8}
+        sm={8}
+        md={8}
+        lg={8}
+        xl={8}
         style={{
           display: "flex",
           justifyContent: "flex-start",
@@ -28,12 +33,15 @@ const HeaderLayout = () => {
         }}
       >
         <Typography.Text
+          className={styles.text_title}
           style={{ fontSize: "24px", color: "white" }}
           onClick={() => {
             if (router.pathname == "/") {
               router.push("/");
             } else if (router.pathname == "/order") {
               router.push("/");
+            } else if (router.pathname == "/paid") {
+              router.push("/payment");
             }
           }}
         >
@@ -42,7 +50,11 @@ const HeaderLayout = () => {
       </Col>
 
       <Col
-        span={8}
+        xs={8}
+        sm={8}
+        md={8}
+        lg={8}
+        xl={8}
         style={{
           display: "flex",
           justifyContent: "center",
@@ -51,8 +63,14 @@ const HeaderLayout = () => {
       >
         <Row>
           <Col span={24} style={{ textAlign: "center" }}>
-            <AppleOutlined style={{ fontSize: "40px", color: "white" }} />
-            <Typography.Text style={{ fontSize: "20px", color: "white" }}>
+            <AppleOutlined
+              style={{ color: "white" }}
+              className={styles.text_middle_icon}
+            />
+            <Typography.Text
+              style={{ color: "white" }}
+              className={styles.text_middle}
+            >
               Lorem ipsum dolor sit amet.
             </Typography.Text>
           </Col>

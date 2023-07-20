@@ -9,7 +9,7 @@ export default function FriedRice({}: Props) {
     <Row style={{ width: "100%", marginTop: "5px" }}>
       <Col style={{ display: "flex", justifyContent: "center" }} span={4}>
         <Image
-          src="https://www.ajinomoto.co.th//storage/photos/shares/our-story/tips/friedrice/62ff47ff5a301.jpg"
+          src="https://www.ajinomoto.co.th/storage/photos/shares/our-story/tips/friedrice/62ff47ff5a301.jpg"
           width={70}
           height={70}
           style={{ borderRadius: "10px" }}
