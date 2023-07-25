@@ -100,6 +100,10 @@ a {
   text-decoration: none;
 }
 
+.ant-card .ant-card-body {
+  padding: 8px;
+  border-radius: 0 0 8px 8px;
+}
 .ant-input-number-input-wrap > input.ant-input-number-input {
   text-align: right;
 }

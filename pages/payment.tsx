@@ -1,22 +1,20 @@
 import Reservation from "@/components/reservation/reservation";
+import PaymentViewmodel from "@/viewmodel/payment/paymentViewmodel";
 import { Col, Row, Typography } from "antd";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 type Props = {};
 
 export default function Payment({}: Props) {
-  const [dataTable, setDataTable] = useState([
-    { id: 1, status: true, size: "3-5 Person" },
-    { id: 9, status: true, size: "3-5 Person" },
-    { id: 10, status: true, size: "3-5 Person" },
-    { id: 11, status: true, size: "3-5 Person" },
-  ]);
-  const [dataBar, setDataBar] = useState([
-    { id: 1, status: true, size: "1-2 Person" },
-    { id: 2, status: true, size: "1-2 Person" },
-    { id: 4, status: true, size: "1-2 Person" },
-    { id: 5, status: true, size: "1-2 Person" },
-  ]);
+  const { table, getTablePaymentData, bar, getBarPaymentData } =
+    PaymentViewmodel();
+  const route = useRouter();
+  useEffect(() => {
+    getTablePaymentData();
+    getBarPaymentData();
+    return () => {};
+  }, []);
   return (
     <>
       <div
@@ -37,7 +35,7 @@ export default function Payment({}: Props) {
           </Col>
         </Row>
       </div>
-      <Reservation table={dataTable} bar={dataBar} />
+      <Reservation table={table} bar={bar} />
     </>
   );
 }

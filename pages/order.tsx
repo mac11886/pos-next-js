@@ -1,22 +1,26 @@
 import Cart from "@/components/cart/cart";
 import FriedRice from "@/components/fried-rice/friedRice";
 import Table from "@/components/table/table";
-import { Col, Input, Row, Space, Typography } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
+import { Col, Input, Row, Space, theme, Typography } from "antd";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { AiFillMinusSquare, AiFillPlusSquare } from "react-icons/ai";
 import styles from "../src/styles/Order.module.css";
+const { getDesignToken, useToken } = theme;
 
 const { Search } = Input;
 type Props = {};
 
 function Order({}: Props) {
   const route = useRouter();
+  const { token } = useToken();
   const [clickMenu, setClickMenu] = useState("All");
   const table = {
     id: Number(route.query.numTable),
     status: true,
     size: "",
+    type: "table",
   };
   const menu = [
     {
@@ -56,7 +60,8 @@ function Order({}: Props) {
                 }}
                 // size={100}
               >
-                <Table data={table} />
+                <Table data={table} isOrder={true} />
+
                 <Space direction="vertical">
                   <Typography.Text style={{ fontWeight: "bold" }}>
                     Date:
@@ -91,11 +96,20 @@ function Order({}: Props) {
                 padding: "5px 5px",
               }}
             >
-              <Search
+              <Input
+                placeholder="Search Food name"
+                prefix={<SearchOutlined />}
+                style={{
+                  width: 200,
+                  border: `1px solid ${token.colorPrimary}`,
+                  borderRadius: "100px",
+                }}
+              />
+              {/* <Search
                 placeholder="search food name"
                 onSearch={onSearch}
-                style={{ width: 200 }}
-              />
+               
+              /> */}
               {menu?.map((m, i) => {
                 return (
                   <Typography.Text

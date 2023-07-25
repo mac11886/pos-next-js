@@ -116,6 +116,7 @@ export default function Paid({}: Props) {
     id: Number(route.query.numTable),
     status: true,
     size: "",
+    type: "table",
   };
   const handleFirstBtnClick = () => {
     setIsReceiptBtn(true);
@@ -140,9 +141,9 @@ export default function Paid({}: Props) {
   return (
     <Row>
       <Col span={16}>
-        <Card style={{ margin: "10px", padding: "10px" }}>
+        <Card style={{ marginLeft: "10px", marginRight: "10px" }}>
           <Space direction="horizontal" size={100}>
-            <TableComponent data={table} />
+            <TableComponent data={table} isOrder={true} />
             <Space direction="vertical">
               <Typography.Text style={{ fontWeight: "bold" }}>
                 Date:

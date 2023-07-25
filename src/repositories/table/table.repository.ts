@@ -1,46 +1,40 @@
-import { ListTable, Table } from "./interface";
+import { TableData } from "./interface";
 
 export interface TableRepository {
-  getTable(): ListTable;
-  getBar(): ListTable;
+  getTable(): Promise<TableData>;
+  getBar(): Promise<TableData>;
+  getTablePayment(): Promise<TableData>;
+  getBarPayment(): Promise<TableData>;
 }
 export class TableRepositoryImpl implements TableRepository {
-  getBar(): ListTable {
-    const list: Table[] = [
-      { id: 1, status: true, size: "1-2 Person" },
-      { id: 2, status: false, size: "1-2 Person" },
-      { id: 4, status: false, size: "1-2 Person" },
-      { id: 5, status: true, size: "1-2 Person" },
-      { id: 6, status: true, size: "1-2 Person" },
-      { id: 7, status: false, size: "1-2 Person" },
-    ];
-    const listBar: ListTable = {
-      table: list,
-    };
-    return listBar;
+  async getTablePayment(): Promise<TableData> {
+    const response = await fetch("http://localhost:4000/api/payment/table");
+    if (!response.ok) {
+      throw new Error("failed to get table payment");
+    }
+    return response.json();
   }
 
-  getTable(): ListTable {
-    const list: Table[] = [
-      { id: 1, status: true, size: "3-5 Person" },
-      { id: 2, status: false, size: "3-5 Person" },
-      { id: 4, status: false, size: "3-5 Person" },
-      { id: 5, status: true, size: "3-5 Person" },
-      { id: 6, status: true, size: "3-5 Person" },
-      { id: 7, status: false, size: "3-5 Person" },
-      { id: 8, status: true, size: "3-5 Person" },
-      { id: 9, status: false, size: "3-5 Person" },
-      { id: 10, status: false, size: "3-5 Person" },
-      { id: 11, status: true, size: "3-5 Person" },
-      { id: 12, status: true, size: "3-5 Person" },
-      { id: 13, status: true, size: "3-5 Person" },
-      { id: 14, status: true, size: "3-5 Person" },
-      { id: 15, status: true, size: "3-5 Person" },
-      { id: 16, status: true, size: "3-5 Person" },
-    ];
-    const listTable: ListTable = {
-      table: list,
-    };
-    return listTable;
+  async getBarPayment(): Promise<TableData> {
+    const response = await fetch("http://localhost:4000/api/payment/bar");
+    if (!response.ok) {
+      throw new Error("failed to get bar payment");
+    }
+    return response.json();
+  }
+  async getBar(): Promise<TableData> {
+    const response = await fetch("http://localhost:4000/api/table/bar");
+    if (!response.ok) {
+      throw new Error("failed to get bar");
+    }
+    return response.json();
+  }
+
+  async getTable(): Promise<TableData> {
+    const response = await fetch("http://localhost:4000/api/table");
+    if (!response.ok) {
+      throw new Error("failed to get table");
+    }
+    return response.json();
   }
 }

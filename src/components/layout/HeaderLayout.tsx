@@ -75,7 +75,7 @@ const HeaderLayout = () => {
             </Typography.Text>
           </Col>
           <Col span={24} style={{ textAlign: "center" }}>
-            <Typography.Text style={{ color: "black" }}>
+            <Typography.Text style={{ color: "white" }}>
               Branch: Bangkok
             </Typography.Text>
           </Col>

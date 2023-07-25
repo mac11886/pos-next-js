@@ -17,11 +17,15 @@ export default function Cart({}: Props) {
       }}
     >
       <Space direction="vertical">
-        <Typography.Text style={{ textAlign: "center" }}>Order</Typography.Text>
+        <Typography.Text
+          style={{ textAlign: "center", fontSize: "18px", fontWeight: "bold" }}
+        >
+          Order
+        </Typography.Text>
         <div
           style={{
-            borderTop: "2px solid",
-            borderBottom: "2px solid",
+            borderTop: "1px solid",
+            borderBottom: "1px solid",
             overflowY: "auto",
             marginRight: "10px",
           }}
@@ -87,7 +91,7 @@ export default function Cart({}: Props) {
           <Col span={12}>
             <Typography.Text>Fried rice with pork (Large)</Typography.Text>
           </Col>
-          <Col span={12}>
+          <Col span={12} style={{ textAlign: "right", paddingRight: "14px" }}>
             <Typography.Text>200 ฿</Typography.Text>
           </Col>
         </Row>

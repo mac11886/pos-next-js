@@ -1,18 +1,19 @@
 import { Table } from "@/repositories/table/interface";
-import { Space } from "antd";
+import { Space, Typography } from "antd";
 import { useRouter } from "next/router";
 import { GiTable } from "react-icons/gi";
 import styles from "../../styles/Table.module.css";
 
 type Props = {
   data?: Table;
+  isOrder: boolean;
 };
 
-export default function Table({ data }: Props) {
+export default function Table({ data, isOrder }: Props) {
   const route = useRouter();
   return (
     <div
-      style={{ marginLeft: "15px" }}
+      style={{ marginLeft: isOrder ? "0px" : "15px" }}
       onClick={() => {
         if (data?.status) {
           if (route.pathname == "/") {
@@ -23,27 +24,39 @@ export default function Table({ data }: Props) {
         }
       }}
     >
-      <Space direction="vertical">
+      <Space
+        direction="vertical"
+        className={isOrder ? styles.space_order : styles.space_table_home}
+      >
         <div className="container_image" style={{ position: "relative" }}>
           <div
             style={{
               position: "absolute",
-              top: -5,
-              left: 15,
-              zIndex: 9999,
+              top: isOrder ? -5 : -10,
+              left: isOrder ? 15 : 25,
+              zIndex: 100,
             }}
-            className={styles.circleNumTable}
+            className={
+              isOrder ? styles.circleNumTableOrder : styles.circleNumTable
+            }
           >
-            {data?.id}
+            <Typography.Text
+              style={{ fontSize: isOrder ? "18px" : "24px", color: "white" }}
+            >
+              {data?.id}
+            </Typography.Text>
           </div>
         </div>
-
         <GiTable
           className={
-            data?.status ? styles.circleTableOpen : styles.circleTableClose
+            data?.status
+              ? isOrder
+                ? styles.circleTableOpenOrder
+                : styles.circleTableOpen
+              : styles.circleTableClose
           }
         />
-        <span>{data?.size}</span>
+        <span style={{ marginLeft: "16px" }}>{data?.size}</span>
       </Space>
     </div>
   );

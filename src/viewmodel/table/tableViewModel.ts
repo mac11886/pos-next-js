@@ -1,4 +1,4 @@
-import { ListTable } from "@/repositories/table/interface";
+import { Table } from "@/repositories/table/interface";
 import { GetBarUsecase, GetBarUsecaseImpl } from "@/usecases/getBar.usecase";
 import {
   GetTableUsecase,
@@ -7,28 +7,26 @@ import {
 import { useState } from "react";
 
 export default function TableViewmodel() {
-  const [table, setTable] = useState<ListTable | null>(null);
-  const [bar, setBar] = useState<ListTable | null>(null);
+  const [table, setTable] = useState<Table[] | null>(null);
+  const [bar, setBar] = useState<Table[] | null>(null);
 
-  const getTableData = () => {
+  const getTableData = async () => {
     try {
       let getTableUsecase: GetTableUsecase;
       getTableUsecase = new GetTableUsecaseImpl();
-      const data: ListTable = getTableUsecase.execute();
-      setTable(data);
-      console.log(data);
+      const data: Promise<Table[]> = getTableUsecase.execute();
+      setTable(await data);
       return data;
     } catch (err) {
       console.log(err);
     }
   };
-  const getBarData = () => {
+  const getBarData = async () => {
     try {
       let getBarUsecase: GetBarUsecase;
       getBarUsecase = new GetBarUsecaseImpl();
-      const data: ListTable = getBarUsecase.execute();
-      setBar(data);
-      console.log(data);
+      const data: Promise<Table[]> = getBarUsecase.execute();
+      setBar(await data);
       return data;
     } catch (err) {
       console.log(err);

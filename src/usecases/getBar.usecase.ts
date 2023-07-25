@@ -1,11 +1,11 @@
-import { ListTable } from "@/repositories/table/interface";
+import { Table } from "@/repositories/table/interface";
 import {
   TableRepository,
   TableRepositoryImpl,
 } from "@/repositories/table/table.repository";
 
 export interface GetBarUsecase {
-  execute(): ListTable;
+  execute(): Promise<Table[]>;
 }
 
 export class GetBarUsecaseImpl implements GetBarUsecase {
@@ -14,8 +14,8 @@ export class GetBarUsecaseImpl implements GetBarUsecase {
   ) {
     this.tableRepository = tableRepository;
   }
-  execute(): ListTable {
-    const data = this.tableRepository.getBar();
-    return data;
+  async execute(): Promise<Table[]> {
+    const data = await this.tableRepository.getBar();
+    return data.data;
   }
 }
