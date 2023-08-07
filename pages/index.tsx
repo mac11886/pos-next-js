@@ -1,5 +1,5 @@
 import Reservation from "@/components/reservation/reservation";
-import TableViewmodel from "@/viewmodel/table/tableViewModel";
+import TableViewmodel from "@/viewmodel/table/tableViewmodel";
 import { Col, Row, Typography } from "antd";
 import { useRouter } from "next/router";
 import { useEffect } from "react";

@@ -2,11 +2,11 @@ import { Table } from "@/repositories/table/interface";
 import {
   GetBarPaymentUsecase,
   GetBarPaymentUsecaseImpl,
-} from "@/usecases/getBarPayment.usecase";
+} from "@/usecases/table/getBarPayment.usecase";
 import {
   GetTablePaymentUsecase,
   GetTablePaymentUsecaseImpl,
-} from "@/usecases/getTablePayment.usecase";
+} from "@/usecases/table/getTablePayment.usecase";
 import { useState } from "react";
 
 export default function PaymentViewmodel() {

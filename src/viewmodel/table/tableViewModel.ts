@@ -1,9 +1,12 @@
 import { Table } from "@/repositories/table/interface";
-import { GetBarUsecase, GetBarUsecaseImpl } from "@/usecases/getBar.usecase";
+import {
+  GetBarUsecase,
+  GetBarUsecaseImpl,
+} from "@/usecases/table/getBar.usecase";
 import {
   GetTableUsecase,
   GetTableUsecaseImpl,
-} from "@/usecases/getTable.usecase";
+} from "@/usecases/table/getTable.usecase";
 import { useState } from "react";
 
 export default function TableViewmodel() {

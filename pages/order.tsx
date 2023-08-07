@@ -1,18 +1,26 @@
 import Cart from "@/components/cart/cart";
 import FriedRice from "@/components/fried-rice/friedRice";
 import Table from "@/components/table/table";
+import MenuViewmodel from "@/viewmodel/menu/menuViewmodel";
 import { SearchOutlined } from "@ant-design/icons";
 import { Col, Input, Row, Space, theme, Typography } from "antd";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { AiFillMinusSquare, AiFillPlusSquare } from "react-icons/ai";
 import styles from "../src/styles/Order.module.css";
 const { getDesignToken, useToken } = theme;
 
-const { Search } = Input;
 type Props = {};
 
 function Order({}: Props) {
+  const {
+    category,
+    getAllMenu,
+    getDrinkMenu,
+    getALaCarteMenu,
+    getDessertMenu,
+  } = MenuViewmodel();
+
   const route = useRouter();
   const { token } = useToken();
   const [clickMenu, setClickMenu] = useState("All");
@@ -43,8 +51,18 @@ function Order({}: Props) {
     },
   ];
   console.log(route.query);
-  const onSearch = (value: string) => console.log(value);
-
+  const [searchQuery, setSearchQuery] = useState("");
+  const filterData = category?.filter((item) =>
+    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  const handleSearchChange = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setSearchQuery(e.target.value);
+  };
+  useEffect(() => {
+    getAllMenu();
+  }, []);
   return (
     <>
       <div>
@@ -97,6 +115,7 @@ function Order({}: Props) {
               }}
             >
               <Input
+                onChange={handleSearchChange}
                 placeholder="Search Food name"
                 prefix={<SearchOutlined />}
                 style={{
@@ -105,11 +124,6 @@ function Order({}: Props) {
                   borderRadius: "100px",
                 }}
               />
-              {/* <Search
-                placeholder="search food name"
-                onSearch={onSearch}
-               
-              /> */}
               {menu?.map((m, i) => {
                 return (
                   <Typography.Text
@@ -117,6 +131,15 @@ function Order({}: Props) {
                     className={m.name == clickMenu ? styles.menuGreen : ""}
                     onClick={() => {
                       setClickMenu(m.name);
+                      if (m.name == "Drink") {
+                        getDrinkMenu();
+                      } else if (m.name == "A La Carte") {
+                        getALaCarteMenu();
+                      } else if (m.name == "Dessert") {
+                        getDessertMenu();
+                      } else {
+                        getAllMenu();
+                      }
                     }}
                   >
                     {m.name}
@@ -132,8 +155,14 @@ function Order({}: Props) {
                   width: "100%",
                 }}
               >
-                {Array.from(Array(10)).map((m, i) => {
-                  return <FriedRice />;
+                {filterData?.map((m, i) => {
+                  return (
+                    <FriedRice
+                      img={m.img_url.toString()}
+                      name={m.name.toString()}
+                      price={m.price.toString()}
+                    />
+                  );
                 })}
               </div>
             </Row>

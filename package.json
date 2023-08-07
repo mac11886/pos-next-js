@@ -15,6 +15,7 @@
     "@types/react-dom": "18.2.6",
     "@types/styled-components": "^5.1.26",
     "antd": "^5.7.0",
+    "crypto-js": "^4.1.1",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.9",
     "next": "13.4.9",
@@ -24,5 +25,8 @@
     "react-infinite-scroll-component": "^6.1.0",
     "styled-components": "^6.0.4",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.1.1"
   }
 }
